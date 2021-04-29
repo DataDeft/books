@@ -1,0 +1,18 @@
+<!doctype html>
+
+<title>Hello from Flask</title>
+
+<html>
+   <body>
+      <form action = "{{ url_for('add_book') }}" method = "POST">
+         <h3>Book</h3>
+         Title<br>
+         <input type = "text" name = "title" /></br>
+
+         Year<br>
+         <input type = "int" name = "year" /></br>
+
+         <input type = "submit" value = "submit" /><br>
+      </form>
+   </body>
+</html>
