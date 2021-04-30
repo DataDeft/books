@@ -1,9 +1,6 @@
-#!/usr/bin/env python
 
-
-from flask import Flask
+from flask import Flask, render_template
 from markupsafe import escape
-from flask import render_template
 
 
 app = Flask(__name__)
@@ -11,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return '<h2>Hello, World!</h2> <br /> <a href="/user/example">LINK</a>'
+    return '<h2>Hello, World!</h2> <br /> <a href="/user/example">With param</a> <br /> <a href="/user">Without</a>'
 
 
 @app.route('/user/')

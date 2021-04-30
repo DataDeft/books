@@ -1,21 +1,16 @@
-#!/usr/bin/env python
-
-
 from flask import Flask, request, render_template
-from markupsafe import escape
 
-import logging
 import sqlite3
 
 
 app = Flask(__name__)
-logger = logging.getLogger()
+
 
 create_books_table_sql = '''
     CREATE TABLE books (
     book_id INTEGER PRIMARY KEY
     , title TEXT NOT NULL UNIQUE
-    , year INT NOT NULL
+    , year INTEGER NOT NULL
     );
 '''
 
@@ -26,7 +21,6 @@ def index():
 
 @app.route('/create-db')
 def create_db():
-
     try:
         msg = "Connecting..."
         conn = sqlite3.connect('books.db')
@@ -40,7 +34,7 @@ def create_db():
         conn.rollback()
         msg = str(ex)
     finally:
-        return render_template("create_db.html",msg = msg)
+        return render_template("create_db.html", msg = msg)
 
 
 @app.route('/add-book',methods = ['GET', 'POST'])
@@ -70,7 +64,7 @@ def add_book():
             msg = "error in insert operation"
 
         finally:
-            return render_template("add_book.html",msg = msg)
+            return render_template("render_outcome.html",msg = msg)
 
 
 
